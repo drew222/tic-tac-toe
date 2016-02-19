@@ -83,4 +83,11 @@
             </plugin>
         </plugins>
     </build>
+<!--
+    <modules>
+        <module>api</module>
+        <module>application</module>
+        <module>client</module>
+    </modules>
+-->
 </project>
