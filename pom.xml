@@ -5,6 +5,7 @@
     <groupId>com.example</groupId>
     <artifactId>my-project</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     <dependencies>
         <!-- none yet -->
@@ -83,11 +84,11 @@
             </plugin>
         </plugins>
     </build>
-<!--
+<!-- move this comment below modules -->
     <modules>
         <module>api</module>
         <module>application</module>
         <module>client</module>
     </modules>
--->
+
 </project>

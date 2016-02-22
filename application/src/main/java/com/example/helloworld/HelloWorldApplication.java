@@ -3,8 +3,10 @@ package com.example.helloworld;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
-import com.example.helloworld.resources.HelloWorldResource;
-import com.example.helloworld.health.TemplateHealthCheck;
+//import com.example.helloworld.resources.HelloWorldResource;
+//import com.example.helloworld.health.TemplateHealthCheck;
+
+
 import java.util.ArrayList;
 
 public class HelloWorldApplication extends Application<HelloWorldConfiguration> {
@@ -27,9 +29,9 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration> 
                     Environment environment) {
         // nothing to do yet
 	final HelloWorldResource resource = new HelloWorldResource(new ArrayList<Integer>(), configuration.getBoardSize());
-	final TemplateHealthCheck healthCheck = new TemplateHealthCheck(Integer.parseInt(configuration.getBoardSize()));
+	//final TemplateHealthCheck healthCheck = new TemplateHealthCheck(Integer.parseInt(configuration.getBoardSize()));
 	environment.jersey().register(resource);
-	environment.healthChecks().register("boardSize", healthCheck);
+	//environment.healthChecks().register("boardSize", healthCheck);
     }
 
 }
