@@ -5,7 +5,7 @@ import retrofit.http.GET;
  */
 public interface TicTacReadClient {
 
-    @GET("/hello-world/gets")
+    @GET("/hello-world")
     Move retrieveBoard();
 
 }

@@ -1,14 +1,14 @@
 package com.example.helloworld;
 
 
-import retrofit.http.Body;
-import retrofit.http.POST;
-import retrofit.http.Path;
-import retrofit.http.Query;
+import retrofit.http.*;
+
+import javax.ws.rs.QueryParam;
+//import javax.ws.rs.*;
 
 
 public interface TicTacWriteClient {
 
-    @POST("/hello-world/posts")
-    Move performMove(int player, int move);
+    @POST("/hello-world")
+    Move performMove(@Query("player") int player, @Query("move") int move);
 }

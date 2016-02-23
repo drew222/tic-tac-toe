@@ -1,6 +1,6 @@
 mvn clean package
 
-java -jar target/my-project-0.0.1-SNAPSHOT.jar server hello-world.yml
+java -jar application/target/application-0.0.1-SNAPSHOT.jar server hello-world.yml
 
 sending commands...
 
