@@ -8,13 +8,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 //import org.hibernate.validator.constraints.Length;
 
 public class Move {
-    private long id;
-    private int player;
-    private int moveSpot;
-    private String message;
+    private final long id;
+    private final int player;
+    private final int moveSpot;
+    private final String message;
 
     public Move() {
         // Jackson deserialization
+        this.id = -1;
+        this.player = -1;
+        this.moveSpot = -1;
+        this.message = "";
     }
 
     public Move(long id, int move, int player, String message) {
