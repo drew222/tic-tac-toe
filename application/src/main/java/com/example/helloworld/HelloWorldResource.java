@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicLong;
 @Produces(MediaType.APPLICATION_JSON)
 public class HelloWorldResource {
     private final AtomicLong counter;
-    private ArrayList<Integer> board;
+    ArrayList<Integer> board;
     private boolean gameOver = false;
     private boolean onesTurn = true;
 
