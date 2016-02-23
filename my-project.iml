@@ -49,7 +49,6 @@
     <orderEntry type="library" name="Maven: org.glassfish.hk2:hk2-api:2.4.0-b31" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish.hk2:hk2-utils:2.4.0-b31" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish.hk2.external:aopalliance-repackaged:2.4.0-b31" level="project" />
-    <orderEntry type="library" name="Maven: org.glassfish.hk2.external:javax.inject:2.4.0-b31" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish.hk2:hk2-locator:2.4.0-b31" level="project" />
     <orderEntry type="library" name="Maven: org.javassist:javassist:3.18.1-GA" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish.jersey.ext:jersey-metainf-services:2.21" level="project" />

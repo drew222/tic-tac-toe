@@ -10,6 +10,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import java.util.concurrent.atomic.AtomicLong;
+import javax.inject.Inject;
 
 @Path("/tictac")
 @Produces(MediaType.APPLICATION_JSON)
@@ -19,10 +20,11 @@ public class TicTacGameResource {
     private boolean gameOver = false;
     private boolean onesTurn = true;
 
-    public TicTacGameResource(ArrayList<Integer> board, String boardSize) {
+    @Inject
+    public TicTacGameResource(ArrayList<Integer> board, int boardSize) {
         this.counter = new AtomicLong();
         this.board = board;
-        for(int i = 0; i < Integer.parseInt(boardSize); i++){
+        for(int i = 0; i < boardSize; i++){
             board.add(0);
         }
     }

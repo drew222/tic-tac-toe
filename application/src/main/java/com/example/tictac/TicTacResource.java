@@ -6,7 +6,7 @@ package com.example.tictac;
 
 import com.codahale.metrics.annotation.Timed;
 import java.util.ArrayList;
-
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -16,6 +16,7 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 public class TicTacResource {
     ArrayList<Integer> board;
+    @Inject
     public TicTacResource(ArrayList<Integer> board){
         this.board = board;
     }

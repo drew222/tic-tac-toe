@@ -62,12 +62,12 @@
 		<dependency>
 			<groupId>com.google.dagger</groupId>
 			<artifactId>dagger</artifactId>
-			<version>2.0</version>
+			<version>${dagger.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.dagger</groupId>
 			<artifactId>dagger-compiler</artifactId>
-			<version>2.0</version>
+			<version>${dagger.version}</version>
 			<optional>true</optional>
 		</dependency>
 	</dependencies>
@@ -77,9 +77,15 @@
     <dependencies>
         <!-- none yet -->
 	<dependency>
-            <groupId>io.dropwizard</groupId>
-            <artifactId>dropwizard-core</artifactId>
-            <version>${dropwizard.version}</version>
+		<groupId>io.dropwizard</groupId>
+		<artifactId>dropwizard-core</artifactId>
+		<version>${dropwizard.version}</version>
+		<exclusions>
+			<exclusion>
+				<groupId>org.glassfish.hk2.external</groupId>
+				<artifactId>javax.inject</artifactId>
+			</exclusion>
+		</exclusions>
         </dependency>
 
 		<dependency>
@@ -107,6 +113,12 @@
 			<groupId>io.dropwizard</groupId>
 			<artifactId>dropwizard-testing</artifactId>
 			<version>${dropwizard.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.glassfish.hk2.external</groupId>
+					<artifactId>javax.inject</artifactId>
+				</exclusion>
+			</exclusions>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -119,6 +131,17 @@
 			<groupId>com.squareup.retrofit</groupId>
 			<artifactId>retrofit</artifactId>
 			<version>${retrofit.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.dagger</groupId>
+			<artifactId>dagger</artifactId>
+			<version>${dagger.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.dagger</groupId>
+			<artifactId>dagger-compiler</artifactId>
+			<version>${dagger.version}</version>
+			<optional>true</optional>
 		</dependency>
     </dependencies>
 </dependencyManagement>
@@ -145,10 +168,28 @@
 		<mockito.version>1.10.19</mockito.version>
 		<slf4j.version>1.7.10</slf4j.version>
 		<retrofit.version>1.9.0</retrofit.version>
+		<dagger.version>2.0</dagger.version>
     </properties>
     
     <build>
         <plugins>
+
+			<!-- THIS WAS AN ATTEMPT FOR DAGGER PREFIXED CLASSES
+			<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<dependencies>
+				<dependency>
+					<groupId>com.google.dagger</groupId>
+					<artifactId>dagger-compiler</artifactId>
+					<version>2.0</version>
+					<optional>true</optional>
+				</dependency>
+			</dependencies>
+			</plugin>
+			-->
+
+
 	    <plugin>
     	        <groupId>org.apache.maven.plugins</groupId>
     		<artifactId>maven-jar-plugin</artifactId>

@@ -33,6 +33,10 @@
       <scope>test</scope>
       <exclusions>
         <exclusion>
+          <artifactId>javax.inject</artifactId>
+          <groupId>org.glassfish.hk2.external</groupId>
+        </exclusion>
+        <exclusion>
           <artifactId>mockito-core</artifactId>
           <groupId>org.mockito</groupId>
         </exclusion>
