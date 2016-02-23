@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="2" failures="0" name="com.example.tictac.TestClient" time="0.165" errors="0" skipped="0">
+<testsuite tests="2" failures="0" name="com.example.tictac.TestClient" time="0.164" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_73.jdk/Contents/Home/jre/lib"/>
@@ -62,6 +62,6 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="com.example.tictac.TestClient" name="testGET" time="0.153"/>
+  <testcase classname="com.example.tictac.TestClient" name="testGET" time="0.152"/>
   <testcase classname="com.example.tictac.TestClient" name="testPOST" time="0.012"/>
 </testsuite>

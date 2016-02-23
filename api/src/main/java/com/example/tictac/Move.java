@@ -5,7 +5,9 @@ package com.example.tictac;
  */
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import static com.google.common.base.Preconditions.checkNotNull;
 //import org.hibernate.validator.constraints.Length;
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class Move {
     private final long id;
@@ -13,15 +15,15 @@ public class Move {
     private final int moveSpot;
     private final String message;
 
-    public Move() {
-        // Jackson deserialization
-        this.id = -1;
-        this.player = -1;
-        this.moveSpot = -1;
-        this.message = "";
-    }
+    
+    @JsonCreator
+    public Move(@JsonProperty("id") long id, @JsonProperty("move") int move,
+                @JsonProperty("player") int player, @JsonProperty("message") String message) {
+        checkNotNull(id);
+        checkNotNull(move);
+        checkNotNull(player);
+        checkNotNull(message);
 
-    public Move(long id, int move, int player, String message) {
         this.id = id;
         this.moveSpot = move;
         this.player = player;
