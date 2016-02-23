@@ -1,5 +1,5 @@
-com/example/helloworld/HelloWorldResource.class
-com/example/helloworld/HelloWorldApplication.class
-com/example/helloworld/health/TemplateHealthCheck.class
-com/example/helloworld/TicTacResource.class
-com/example/helloworld/HelloWorldConfiguration.class
+com/example/tictac/TicTacConfiguration.class
+com/example/tictac/TicTacGameResource.class
+com/example/tictac/TicTacResource.class
+com/example/tictac/health/TemplateHealthCheck.class
+com/example/tictac/TicTacApplication.class
