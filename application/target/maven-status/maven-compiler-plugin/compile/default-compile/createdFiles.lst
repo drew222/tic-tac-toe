@@ -1,3 +1,5 @@
-com/example/helloworld/HelloWorldApplication.class
 com/example/helloworld/HelloWorldResource.class
+com/example/helloworld/HelloWorldApplication.class
+com/example/helloworld/health/TemplateHealthCheck.class
+com/example/helloworld/TicTacResource.class
 com/example/helloworld/HelloWorldConfiguration.class

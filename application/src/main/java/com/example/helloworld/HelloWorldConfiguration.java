@@ -6,11 +6,12 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class HelloWorldConfiguration extends Configuration {
     @NotEmpty
+    @JsonProperty("boardSize")
     private String boardSize;
 
-    @JsonProperty
+    //@JsonProperty
     public String getBoardSize() { return this.boardSize; }
 
-    @JsonProperty
+   // @JsonProperty
     public void setBoardSize(String boardSize) { this.boardSize = boardSize; }
 }

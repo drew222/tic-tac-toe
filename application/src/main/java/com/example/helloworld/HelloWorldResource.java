@@ -4,6 +4,7 @@ package com.example.helloworld;
 import com.codahale.metrics.annotation.Timed;
 import java.util.ArrayList;
 
+import javax.ws.rs.POST;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -36,7 +37,7 @@ public class HelloWorldResource {
     }
     */
 
-    @GET
+    @POST
     @Timed
     public Move performMove(@QueryParam("player") int player, @QueryParam("move") int move){
         if (gameOver){
