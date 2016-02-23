@@ -29,12 +29,12 @@ public class HelloWorldApplication extends Application<HelloWorldConfiguration> 
                     Environment environment) {
         // nothing to do yet
         board = new ArrayList<Integer>();
-	final HelloWorldResource resource = new HelloWorldResource(board, configuration.getBoardSize());
+	    final HelloWorldResource resource = new HelloWorldResource(board, configuration.getBoardSize());
         final TicTacResource resource2 = new TicTacResource(board);
-	final TemplateHealthCheck healthCheck = new TemplateHealthCheck(Integer.parseInt(configuration.getBoardSize()));
-	environment.jersey().register(resource);
+	    final TemplateHealthCheck healthCheck = new TemplateHealthCheck(Integer.parseInt(configuration.getBoardSize()));
+	    environment.jersey().register(resource);
         environment.jersey().register(resource2);
-	environment.healthChecks().register("boardSize", healthCheck);
+	    environment.healthChecks().register("boardSize", healthCheck);
     }
 
 }
