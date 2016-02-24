@@ -25,7 +25,11 @@ class TicTacApplicationModule {
     @Singleton
     @Provides
     ArrayList<Integer> provideBoard(){
-        return new ArrayList<Integer>();
+        ArrayList<Integer> board = new ArrayList<Integer>();
+        for(int i = 0; i < boardSize; i++){
+            board.add(0);
+        }
+        return board;
     }
 
 

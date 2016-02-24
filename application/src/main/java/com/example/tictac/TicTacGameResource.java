@@ -19,12 +19,9 @@ public class TicTacGameResource {
     private boolean onesTurn = true;
 
     @Inject
-    public TicTacGameResource(ArrayList<Integer> board, int boardSize) {
+    public TicTacGameResource(ArrayList<Integer> board) {
         this.counter = new AtomicLong();
         this.board = board;
-        for(int i = 0; i < boardSize; i++){
-            board.add(0);
-        }
     }
 
     @POST
