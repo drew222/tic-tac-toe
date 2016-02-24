@@ -1,6 +1,7 @@
 package com.example.tictac;
 
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class MoveTest {
     private Move aMove = new Move(1, 2, 3, "HelloWorld");
@@ -9,31 +10,31 @@ public class MoveTest {
 
     @Test
     public void testMove(){
-        assert(aMove.getId() == 1);
+        assertTrue(aMove.getId() == 1);
     }
 
     @Test
     public void testMove2(){
-        assert(aMove.getPlayer() == 3);
+        assertTrue(aMove.getPlayer() == 3);
     }
 
     @Test
     public void testMove3(){
-        assert(aMove.getMoveSpot() == 2);
+        assertTrue(aMove.getMoveSpot() == 2);
     }
 
     @Test
     public void testMove4(){
-        assert(aMove.getMessage() == "HelloWorld");
+        assertTrue(aMove.getMessage() == "HelloWorld");
     }
 
     @Test
-    public void testMove5() { assert(aMove.equals(aMove2)); }
+    public void testMove5() { assertTrue(aMove.equals(aMove2)); }
 
     @Test
-    public void testMove6() {  assert(!aMove.equals(aMove3)); }
+    public void testMove6() {  assertTrue(!aMove.equals(aMove3)); }
 
     @Test
-    public void testMove7() { assert(aMove3.toString() == "HelloMSH"); }
+    public void testMove7() { assertTrue(aMove3.toString() == "HelloMSH"); }
 
 }

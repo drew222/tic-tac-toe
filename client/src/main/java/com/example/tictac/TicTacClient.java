@@ -19,8 +19,6 @@ public class TicTacClient {
         return adapter.create(TicTacWriteClient.class);
     }
 
-    public TicTacReadClient newTicTacReadClient() {
-        return adapter.create(TicTacReadClient.class);
-    }
+    public TicTacReadClient newTicTacReadClient() { return adapter.create(TicTacReadClient.class); }
 
 }
