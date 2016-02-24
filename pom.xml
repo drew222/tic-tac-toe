@@ -9,21 +9,9 @@
 
 
 	<dependencies>
-		<!-- none yet -->
-		<dependency>
-			<groupId>io.dropwizard</groupId>
-			<artifactId>dropwizard-core</artifactId>
-			<version>${dropwizard.version}</version>
-		</dependency>
-
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
-			<version>${jackson.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.datatype</groupId>
-			<artifactId>jackson-datatype-jsr310</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
 		<dependency>
@@ -33,9 +21,40 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.dagger</groupId>
+			<artifactId>dagger</artifactId>
+			<version>${dagger.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.dagger</groupId>
+			<artifactId>dagger-compiler</artifactId>
+			<version>${dagger.version}</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>${guava.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.squareup.retrofit</groupId>
+			<artifactId>converter-jackson</artifactId>
+			<version>${retrofit.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.squareup.retrofit</groupId>
+			<artifactId>retrofit</artifactId>
+			<version>${retrofit.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.dropwizard</groupId>
+			<artifactId>dropwizard-core</artifactId>
+			<version>${dropwizard.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>io.dropwizard</groupId>
@@ -49,15 +68,26 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
+	</dependencies>
+
+
+<dependencyManagement>
+    <dependencies>
 		<dependency>
-			<groupId>com.squareup.retrofit</groupId>
-			<artifactId>converter-jackson</artifactId>
-			<version>${retrofit.version}</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.squareup.retrofit</groupId>
-			<artifactId>retrofit</artifactId>
-			<version>${retrofit.version}</version>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jdk8</artifactId>
+			<version>${jackson.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+			<version>${jackson.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.dagger</groupId>
@@ -70,13 +100,17 @@
 			<version>${dagger.version}</version>
 			<optional>true</optional>
 		</dependency>
-	</dependencies>
-
-
-<dependencyManagement>
-    <dependencies>
-        <!-- none yet -->
-	<dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.squareup.retrofit</groupId>
+			<artifactId>retrofit</artifactId>
+			<version>${retrofit.version}</version>
+		</dependency>
+		<dependency>
 		<groupId>io.dropwizard</groupId>
 		<artifactId>dropwizard-core</artifactId>
 		<version>${dropwizard.version}</version>
@@ -87,28 +121,6 @@
 			</exclusion>
 		</exclusions>
         </dependency>
-
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-annotations</artifactId>
-			<version>${jackson.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.datatype</groupId>
-			<artifactId>jackson-datatype-jsr310</artifactId>
-			<version>${jackson.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.datatype</groupId>
-			<artifactId>jackson-datatype-jdk8</artifactId>
-			<version>${jackson.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>${guava.version}</version>
-		</dependency>
 		<dependency>
 			<groupId>io.dropwizard</groupId>
 			<artifactId>dropwizard-testing</artifactId>
@@ -126,22 +138,6 @@
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.squareup.retrofit</groupId>
-			<artifactId>retrofit</artifactId>
-			<version>${retrofit.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.dagger</groupId>
-			<artifactId>dagger</artifactId>
-			<version>${dagger.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.dagger</groupId>
-			<artifactId>dagger-compiler</artifactId>
-			<version>${dagger.version}</version>
-			<optional>true</optional>
 		</dependency>
     </dependencies>
 </dependencyManagement>
