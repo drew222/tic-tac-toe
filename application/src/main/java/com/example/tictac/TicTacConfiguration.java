@@ -11,10 +11,7 @@ public class TicTacConfiguration extends Configuration {
     @JsonProperty("boardSize")
     private String boardSize;
 
-    //@JsonProperty
-    //@Inject
     public int getBoardSize() { return Integer.parseInt(this.boardSize); }
 
-   // @JsonProperty
     public void setBoardSize(String boardSize) { this.boardSize = boardSize; }
 }

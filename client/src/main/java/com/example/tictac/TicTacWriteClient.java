@@ -2,7 +2,6 @@ package com.example.tictac;
 
 
 import retrofit.http.*;
-//import javax.ws.rs.*;
 
 
 public interface TicTacWriteClient {

@@ -1,9 +1,7 @@
 package com.example.tictac;
 
-//import com.example.tictac.Move;
 import com.codahale.metrics.annotation.Timed;
 import java.util.ArrayList;
-
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;

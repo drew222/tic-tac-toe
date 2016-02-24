@@ -6,7 +6,6 @@ package com.example.tictac;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import static com.google.common.base.Preconditions.checkNotNull;
-//import org.hibernate.validator.constraints.Length;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class Move {

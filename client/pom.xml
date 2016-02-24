@@ -34,13 +34,6 @@
       <artifactId>api</artifactId>
       <version>${project.version}</version>
     </dependency>
-    <!--
-    <dependency>
-      <groupId>com.example</groupId>
-      <artifactId>application</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-    -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-annotations</artifactId>

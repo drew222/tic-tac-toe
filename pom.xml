@@ -173,35 +173,18 @@
     
     <build>
         <plugins>
-
-			<!-- THIS WAS AN ATTEMPT FOR DAGGER PREFIXED CLASSES
-			<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-compiler-plugin</artifactId>
-			<dependencies>
-				<dependency>
-					<groupId>com.google.dagger</groupId>
-					<artifactId>dagger-compiler</artifactId>
-					<version>2.0</version>
-					<optional>true</optional>
-				</dependency>
-			</dependencies>
-			</plugin>
-			-->
-
-
-	    <plugin>
+	    	<plugin>
     	        <groupId>org.apache.maven.plugins</groupId>
-    		<artifactId>maven-jar-plugin</artifactId>
-    		<version>2.4</version>
-    		<configuration>
+    			<artifactId>maven-jar-plugin</artifactId>
+    			<version>2.4</version>
+    			<configuration>
         	    <archive>
             		<manifest>
                 	    <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
             		</manifest>
         	    </archive>
-    		</configuration>
-	    </plugin>
+    			</configuration>
+	    	</plugin>
 	    <plugin>
     		<groupId>org.apache.maven.plugins</groupId>
     		<artifactId>maven-shade-plugin</artifactId>
