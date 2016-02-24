@@ -11,47 +11,74 @@ import javax.inject.Inject;
 @Produces(MediaType.APPLICATION_JSON)
 public class TicTacGameResource {
     private final AtomicLong counter;
-    ArrayList<Integer> board;
-    private boolean gameOver = false;
-    private boolean onesTurn = true;
+    private ArrayList<ArrayList<Integer>> boards;
+    private ArrayList<Integer> gameOvers = new ArrayList<>();
+    private ArrayList<Integer> onesTurns = new ArrayList<>();
+    private int boardSize;
 
     @Inject
-    public TicTacGameResource(ArrayList<Integer> board) {
+    public TicTacGameResource(ArrayList<ArrayList<Integer>> boards, int boardSize) {
         this.counter = new AtomicLong();
-        this.board = board;
+        this.boards = boards;
+        this.boardSize = boardSize;
     }
 
     @POST
+    @Path("/create")
+    public Game createGame(){
+        int id = boards.size();
+        ArrayList<Integer> newGame = new ArrayList<>();
+        for(int i = 0; i < boardSize; i++){
+            newGame.add(0);
+        }
+        this.boards.add(newGame);
+        this.gameOvers.add(0);
+        this.onesTurns.add(1);
+        return new Game(id);
+    }
+
+    @POST
+    @Path("/move")
     @Timed
-    public Move performMove(@QueryParam("player") int player, @QueryParam("move") int move){
-        if (gameOver){
+    public Move performMove(@QueryParam("game") int game, @QueryParam("player") int player, @QueryParam("move") int move){
+        if (game >= this.boards.size() || game < 0){
+            return new Move(counter.incrementAndGet(), player, move, "This game does not exist.");
+        }
+        if (gameOvers.get(game) == 1){
             return new Move(counter.incrementAndGet(), player, move, "Game is Over!");
         }
-        if ((player != 1 && player != 2) || (move > 9 || move < 1) || (board.get(move - 1) != 0)
-                || (onesTurn && player == 2) || (!onesTurn && player == 1)){
+        if ((player != 1 && player != 2) || (move > 9 || move < 1) || (boards.get(game).get(move - 1) != 0)
+                || ((onesTurns.get(game) == 1) && player == 2) || ((onesTurns.get(game) == 0) && player == 1)){
             //invalid move
             return new Move(counter.incrementAndGet(), move, player, "Invalid Instruction.");
         }else {
             //good move, update board
-            board.set(move - 1, player);
-            onesTurn = !onesTurn;
+            boards.get(game).set(move - 1, player);
+            if (onesTurns.get(game) == 1) {
+                onesTurns.set(game, 0);
+            }else{
+                onesTurns.set(game, 1);
+            }
             //check if the move makes a player win
-            if (foundWinner()) {
-                gameOver = true;
+            if (foundWinner(boards.get(game))) {
+                gameOvers.set(game, 1);
                 return new Move(counter.incrementAndGet(), move, player, "Player " + player + " wins!");
             }else {
-                return new Move(counter.incrementAndGet(), move, player, boardString());
+                return new Move(counter.incrementAndGet(), move, player, boardString(boards.get(game)));
             }
         }
     }
 
     @GET
     @Timed
-    public Move retrieveBoard(){
-        return new Move(-1, -1, -1, board.toString());
+    public Move retrieveBoard(@QueryParam("game") int game){
+        if (game >= this.boards.size() || game < 0){
+            return new Move(counter.incrementAndGet(), -1, -1, "This game does not exist.");
+        }
+        return new Move(-1, -1, -1, boards.get(game).toString());
     }
 
-    public boolean foundWinner(){
+    public boolean foundWinner(ArrayList<Integer> board){
         //check columns
         if (board.get(0) != 0 && (board.get(0) == board.get(3) && board.get(3) == board.get(6))){
             return true;
@@ -79,10 +106,15 @@ public class TicTacGameResource {
     }
 
     //not printing as intended in a JSON format
-    public String boardString(){
+    public String boardString(ArrayList<Integer> board){
         String theString = "\n" + "| " + board.get(0) + " | " + board.get(1) + " | " + board.get(2) + " |\n";
         theString += "| " + board.get(3) + " | " + board.get(4) + " | " + board.get(5) + " |\n";
         theString += "| " + board.get(6) + " | " + board.get(7) + " | " + board.get(8) + " |";
         return theString;
+    }
+
+    //this is for testing purposes
+    public ArrayList<ArrayList<Integer>> getBoards(){
+        return this.boards;
     }
 }

@@ -12,17 +12,23 @@ public class TestClient {
 
     @Test
     public void testPOST() {
-        Move aMove = client.newTicTacWriteClient().performMove(1, 2);
+        TicTacWriteClient writer = client.newTicTacWriteClient();
+        Game aGame = writer.createGame();
+        Move aMove = writer.performMove(aGame.getId(), 1, 2);
         assertTrue(aMove.getPlayer() == 1);
         assertTrue(aMove.getMoveSpot() == 2);
     }
 
     @Test
     public void testGET() {
-        Move aMove = client.newTicTacReadClient().retrieveBoard();
+        TicTacWriteClient writer = client.newTicTacWriteClient();
+        TicTacReadClient reader = client.newTicTacReadClient();
+        Game aGame = writer.createGame();
+        Move aMove = reader.retrieveBoard(aGame.getId());
         assertTrue(aMove.getPlayer() == -1);
         assertTrue(aMove.getMoveSpot() == -1);
         assertTrue(aMove.getId() == -1);
     }
+
 
 }

@@ -4,6 +4,8 @@ java -jar application/target/application-0.0.1-SNAPSHOT.jar server hello-world.y
 
 sending commands...
 
-curl 'localhost:8080/hello-world/'
+curl 'localhost:8080/tictac/?game=0'
 
-curl 'localhost:8080/hello-world/?player=1&move=2' -X POST
+curl 'localhost:8080/tictac/move/?game=0&player=1&move=2' -X POST
+
+curl 'localhost:8080/tictac/create/?' -X POST

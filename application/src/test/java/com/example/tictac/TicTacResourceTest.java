@@ -7,25 +7,23 @@ import java.util.*;
 public class TicTacResourceTest {
 
     @Test
-    public void testBoardCreation() {
-        ArrayList<Integer> aBoard = new ArrayList<>();
-        for(int i = 0; i < 9; i++){
-            aBoard.add(0);
-        }
-        TicTacGameResource aResource = new TicTacGameResource(aBoard);
-        assertTrue(aResource.board.size() == 9);
+    public void testBoardMove() {
+        ArrayList<ArrayList<Integer>> someBoards = new ArrayList<>();
+        TicTacGameResource aResource = new TicTacGameResource(someBoards, 9);
+        Game aGame = aResource.createGame();
+        Move theMove = aResource.performMove(aGame.getId(), 1, 1);
+        assertTrue(theMove.getMoveSpot() == 1);
     }
 
     @Test
-    public void testBoardMove(){
-        ArrayList<Integer> aBoard = new ArrayList<>();
-        for(int i = 0; i < 9; i++){
-            aBoard.add(0);
-        }
-        TicTacGameResource aResource = new TicTacGameResource(aBoard);
-        aResource.performMove(1,1);
-        assertTrue(aResource.board.get(0) == 1);
-        assertTrue(aResource.board.get(1) == 0);
+    public void testBoardGet(){
+        ArrayList<ArrayList<Integer>> someBoards = new ArrayList<>();
+        TicTacGameResource aResource = new TicTacGameResource(someBoards, 9);
+        Game aGame = aResource.createGame();
+        aResource.performMove(aGame.getId(), 1, 1);
+        ArrayList<ArrayList<Integer>> theBoards = aResource.getBoards();
+        assertTrue(theBoards.get(aGame.getId()).get(0) == 1);
+        assertTrue(theBoards.get(aGame.getId()).get(1) == 0);
     }
 
 }

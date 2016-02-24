@@ -5,17 +5,17 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 public class TemplateHealthCheck extends HealthCheck {
     private final int boardSize;
-    private final ArrayList<Integer> board;
+    private final ArrayList<ArrayList<Integer>> boards;
 
     @Inject
-    public TemplateHealthCheck(int boardSize, ArrayList<Integer> board) {
-        this.board = board;
+    public TemplateHealthCheck(int boardSize, ArrayList<ArrayList<Integer>> boards) {
+        this.boards = boards;
         this.boardSize = boardSize;
     }
 
     @Override
     protected Result check() throws Exception {
-        if (board.size() != 9){
+        if (boards != null){
             return Result.unhealthy("The Board is not created correctly.");
         }
 
