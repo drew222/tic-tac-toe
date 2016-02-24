@@ -30,7 +30,6 @@ public class TicTacApplication extends Application<TicTacConfiguration> {
 
         environment.healthChecks().register("boardSize", component.getTemplateHealthCheck());
         environment.jersey().register(component.getTicTacGameResource());
-        environment.jersey().register(component.getTicTacResource());
     }
 
 }

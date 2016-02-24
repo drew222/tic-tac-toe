@@ -11,7 +11,5 @@ import javax.inject.Singleton;
 interface TicTacApplicationComponent {
     TicTacGameResource getTicTacGameResource();
 
-    TicTacResource getTicTacResource();
-
     TemplateHealthCheck getTemplateHealthCheck();
 }
