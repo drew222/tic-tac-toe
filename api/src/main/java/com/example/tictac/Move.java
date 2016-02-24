@@ -15,7 +15,7 @@ public class Move {
     private final int moveSpot;
     private final String message;
 
-    
+
     @JsonCreator
     public Move(@JsonProperty("id") long id, @JsonProperty("move") int move,
                 @JsonProperty("player") int player, @JsonProperty("message") String message) {
@@ -45,4 +45,31 @@ public class Move {
 
     @JsonProperty
     public String getMessage() { return message; }
+
+    @Override
+    public String toString(){
+        return this.message;
+    }
+
+    @Override
+    public boolean equals(Object thing){
+        if(thing.getClass() != this.getClass()){
+            return false;
+        }
+        Move aThing = (Move) thing;
+        if(aThing.getId() != this.getId()){
+            return false;
+        }
+        if(aThing.getMoveSpot() != this.getMoveSpot()){
+            return false;
+        }
+        if(aThing.getPlayer() != this.getPlayer()){
+            return false;
+        }
+        if(aThing.getMessage() != this.getMessage()){
+            return false;
+        }
+        return true;
+    }
+
 }
