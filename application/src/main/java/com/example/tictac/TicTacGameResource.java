@@ -6,6 +6,8 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.concurrent.atomic.AtomicLong;
 import javax.inject.Inject;
+import com.codahale.metrics.MetricRegistry;
+import com.codahale.metrics.Counter;
 
 @Path("/tictac")
 @Produces(MediaType.APPLICATION_JSON)
@@ -15,12 +17,18 @@ public class TicTacGameResource {
     private ArrayList<Integer> gameOvers = new ArrayList<>();
     private ArrayList<Integer> onesTurns = new ArrayList<>();
     private int boardSize;
+    private Counter gameCreationCounter;
+    private Counter player1WinCounter;
+    private Counter player2WinCounter;
 
     @Inject
-    public TicTacGameResource(ArrayList<ArrayList<Integer>> boards, int boardSize) {
+    public TicTacGameResource(ArrayList<ArrayList<Integer>> boards, int boardSize, MetricRegistry metrics) {
         this.counter = new AtomicLong();
         this.boards = boards;
         this.boardSize = boardSize;
+        this.gameCreationCounter = metrics.counter(MetricRegistry.name(TicTacGameResource.class, "game-creation-meter"));
+        this.player1WinCounter = metrics.counter(MetricRegistry.name(TicTacGameResource.class, "player-1-win-meter"));
+        this.player2WinCounter = metrics.counter(MetricRegistry.name(TicTacGameResource.class, "player-2-win-meter"));
     }
 
     @POST
@@ -34,6 +42,7 @@ public class TicTacGameResource {
         this.boards.add(newGame);
         this.gameOvers.add(0);
         this.onesTurns.add(1);
+        gameCreationCounter.inc();
         return new Game(id);
     }
 
@@ -62,6 +71,11 @@ public class TicTacGameResource {
             //check if the move makes a player win
             if (foundWinner(boards.get(game))) {
                 gameOvers.set(game, 1);
+                if (player == 1){
+                    player1WinCounter.inc();
+                }else{
+                    player2WinCounter.inc();
+                }
                 return new Move(counter.incrementAndGet(), move, player, "Player " + player + " wins!");
             }else {
                 return new Move(counter.incrementAndGet(), move, player, boardString(boards.get(game)));

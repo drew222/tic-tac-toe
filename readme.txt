@@ -9,3 +9,7 @@ curl 'localhost:8080/tictac/?game=0'
 curl 'localhost:8080/tictac/move/?game=0&player=1&move=2' -X POST
 
 curl 'localhost:8080/tictac/create/?' -X POST
+
+metrics...
+
+curl 'localhost:8081/metrics?pretty=true'

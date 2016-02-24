@@ -25,7 +25,7 @@ public class TicTacApplication extends Application<TicTacConfiguration> {
     public void run(TicTacConfiguration configuration,
                     Environment environment) {
         TicTacApplicationComponent component = DaggerTicTacApplicationComponent.builder()
-                .ticTacApplicationModule(new TicTacApplicationModule(configuration))
+                .ticTacApplicationModule(new TicTacApplicationModule(configuration, environment))
                 .build();
 
         environment.healthChecks().register("boardSize", component.getTemplateHealthCheck());
