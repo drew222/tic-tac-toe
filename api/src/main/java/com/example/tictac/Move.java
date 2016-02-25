@@ -7,6 +7,8 @@ package com.example.tictac;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import static com.google.common.base.Preconditions.checkNotNull;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.google.common.base.MoreObjects;
+import java.util.Objects;
 
 public class Move {
     private final long id;
@@ -46,29 +48,33 @@ public class Move {
     public String getMessage() { return message; }
 
     @Override
-    public String toString(){
-        return this.message;
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Move move = (Move) o;
+        return Objects.equals(id, move.id)
+                && Objects.equals(player, move.player)
+                && Objects.equals(moveSpot, move.moveSpot)
+                && Objects.equals(message, move.message);
     }
 
     @Override
-    public boolean equals(Object thing){
-        if(thing.getClass() != this.getClass()){
-            return false;
-        }
-        Move aThing = (Move) thing;
-        if(aThing.getId() != this.getId()){
-            return false;
-        }
-        if(aThing.getMoveSpot() != this.getMoveSpot()){
-            return false;
-        }
-        if(aThing.getPlayer() != this.getPlayer()){
-            return false;
-        }
-        if(aThing.getMessage() != this.getMessage()){
-            return false;
-        }
-        return true;
+    public int hashCode() {
+        return Objects.hash(id, player, moveSpot, message);
     }
 
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("id", id)
+                .add("player", player)
+                .add("moveSpot", moveSpot)
+                .add("message", message)
+                .toString();
+    }
 }

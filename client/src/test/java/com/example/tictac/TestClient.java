@@ -29,6 +29,6 @@ public class TestClient {
         assertTrue(aMove.getMoveSpot() == -1);
         assertTrue(aMove.getId() == -1);
     }
-    
+
 
 }
